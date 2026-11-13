@@ -1,0 +1,116 @@
+<Window x:Class="Bitrix24.Desktop.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Вход в Битрикс24"
+        FontSize="16"
+        Background="{StaticResource AppBackground}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="ClearType"
+        RenderOptions.ClearTypeHint="Enabled"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        Width="480"
+        MinWidth="420"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+  <Window.Resources>
+    <Style x:Key="LoginLabel" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+      <Setter Property="Margin" Value="0,0,0,4"/>
+      <Setter Property="LineHeight" Value="20"/>
+      <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
+    </Style>
+    <Style x:Key="LoginBox" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+      <Setter Property="BorderBrush" Value="#D5DDE3"/>
+      <Setter Property="Margin" Value="0,0,0,8"/>
+      <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+    <Style x:Key="LoginSecret" TargetType="PasswordBox" BasedOn="{StaticResource {x:Type PasswordBox}}">
+      <Setter Property="BorderBrush" Value="#D5DDE3"/>
+      <Setter Property="Margin" Value="0,0,0,8"/>
+      <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+    <Style x:Key="HelpToggle" TargetType="ToggleButton">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ToggleButton">
+            <DockPanel>
+              <TextBlock x:Name="Mark" DockPanel.Dock="Left" FontFamily="Segoe MDL2 Assets" Text="&#xE76C;"
+                         FontSize="12" Margin="0,4,8,0" VerticalAlignment="Center" Foreground="{StaticResource Muted}"/>
+              <TextBlock Text="Где взять код и секретный ключ" TextWrapping="Wrap" Foreground="{StaticResource Muted}"
+                         LineHeight="20" LineStackingStrategy="BlockLineHeight"/>
+            </DockPanel>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Mark" Property="Text" Value="&#xE70D;"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="HelpExpander" TargetType="Expander">
+      <Setter Property="IsExpanded" Value="False"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Expander">
+            <StackPanel>
+              <ToggleButton Style="{StaticResource HelpToggle}"
+                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"/>
+              <ContentPresenter x:Name="Body" Margin="0,8,0,0" Visibility="Collapsed"/>
+            </StackPanel>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsExpanded" Value="True">
+                <Setter TargetName="Body" Property="Visibility" Value="Visible"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Grid Margin="32">
+    <StackPanel x:Name="FormPanel">
+      <TextBlock Text="Битрикс24" FontSize="24" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,0,12"/>
+      <Expander Style="{StaticResource HelpExpander}" Margin="0,0,0,12" Expanded="OnHelpChanged" Collapsed="OnHelpChanged">
+        <TextBlock Style="{StaticResource LoginLabel}" Margin="20,8,0,0"
+                   Text="Код приложения и секретный ключ один раз создаёт администратор портала в разделе «Приложения → Разработчикам → Другое → Локальное приложение». Нужные права: чаты (im), задачи (task), пользователи (user), Push&amp;Pull (pull). После смены прав войдите снова. Это не логин и не пароль."/>
+      </Expander>
+      <TextBlock x:Name="ErrorText" TextWrapping="Wrap" Foreground="{StaticResource Danger}" Margin="0,0,0,12" Visibility="Collapsed"/>
+      <TextBlock Text="Адрес портала" Style="{StaticResource LoginLabel}"/>
+      <TextBox x:Name="PortalBox" Style="{StaticResource LoginBox}"/>
+      <TextBlock Text="Код приложения" Style="{StaticResource LoginLabel}"/>
+      <TextBox x:Name="ClientIdBox" Style="{StaticResource LoginBox}"/>
+      <TextBlock Text="Секретный ключ" Style="{StaticResource LoginLabel}"/>
+      <PasswordBox x:Name="SecretBox" Style="{StaticResource LoginSecret}"/>
+      <TextBlock Text="Логин" Style="{StaticResource LoginLabel}"/>
+      <TextBox x:Name="LoginBox" Style="{StaticResource LoginBox}"/>
+      <TextBlock Text="Пароль" Style="{StaticResource LoginLabel}"/>
+      <PasswordBox x:Name="LoginPasswordBox" Style="{StaticResource LoginSecret}" Margin="0"/>
+      <Button x:Name="SignInButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Stretch" Margin="0,16,0,0" Click="OnSignInClick">
+        <TextBlock Text="Войти" TextWrapping="Wrap" TextAlignment="Center"/>
+      </Button>
+    </StackPanel>
+
+    <DockPanel x:Name="BrowserPanel" Visibility="Collapsed" LastChildFill="True">
+      <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+        <Button Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Click="OnBackClick">
+          <TextBlock Text="Назад" TextWrapping="Wrap"/>
+        </Button>
+      </StackPanel>
+      <wv2:WebView2 x:Name="Browser"/>
+    </DockPanel>
+  </Grid>
+</Window>

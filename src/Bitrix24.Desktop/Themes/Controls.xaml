@@ -1,0 +1,344 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:conv="clr-namespace:Bitrix24.Desktop.Converters">
+  <conv:BoolVisibilityConverter x:Key="VisibleWhenTrue"/>
+  <conv:BoolVisibilityConverter x:Key="VisibleWhenFalse" Invert="True"/>
+  <conv:HexBrushConverter x:Key="HexBrush"/>
+  <conv:SubtractConverter x:Key="BubbleWidth" Amount="96" Max="420"/>
+  <conv:RadioBoolConverter x:Key="SendWithCtrlEnter" WhenChecked="False"/>
+  <conv:RadioBoolConverter x:Key="SendWithEnter" WhenChecked="True"/>
+
+  <SolidColorBrush x:Key="AppBackground" Color="#E7F3FB"/>
+  <SolidColorBrush x:Key="ChatCanvas" Color="#9FCFFF"/>
+  <SolidColorBrush x:Key="TimeInk" Color="#66525C69"/>
+  <SolidColorBrush x:Key="DayChip" Color="#33000000"/>
+  <ImageBrush x:Key="ChatWash" ImageSource="pack://application:,,,/Assets/chat-wash.png" Stretch="UniformToFill"/>
+  <ImageBrush x:Key="ChatPattern" ImageSource="pack://application:,,,/Assets/chat-pattern.png" TileMode="Tile" Stretch="Fill" Viewport="0,0,201,200" ViewportUnits="Absolute" AlignmentX="Right" AlignmentY="Top"/>
+  <SolidColorBrush x:Key="Surface" Color="#FFFFFF"/>
+  <SolidColorBrush x:Key="Ink" Color="#333333"/>
+  <SolidColorBrush x:Key="Muted" Color="#959CA4"/>
+  <SolidColorBrush x:Key="Date" Color="#BDC1C6"/>
+  <SolidColorBrush x:Key="IconGray" Color="#A8ADB4"/>
+  <SolidColorBrush x:Key="ViewedInk" Color="#2FC6F6"/>
+  <SolidColorBrush x:Key="ComposeWash" Color="#1F11A9D9"/>
+  <SolidColorBrush x:Key="Line" Color="#EEF0F2"/>
+  <SolidColorBrush x:Key="LinkInk" Color="#005BBB"/>
+  <SolidColorBrush x:Key="Accent" Color="#00ACE3"/>
+  <SolidColorBrush x:Key="AccentHover" Color="#0098CC"/>
+  <SolidColorBrush x:Key="Selection" Color="#00ACE3"/>
+  <SolidColorBrush x:Key="Hover" Color="#F4F7F8"/>
+  <SolidColorBrush x:Key="MineBubble" Color="#E9FECB"/>
+  <SolidColorBrush x:Key="QuoteWash" Color="#F8FAFB"/>
+  <SolidColorBrush x:Key="CodeWash" Color="#E8EEF2"/>
+  <SolidColorBrush x:Key="QuoteInk" Color="#828B95"/>
+  <SolidColorBrush x:Key="QuoteName" Color="#0075FF"/>
+  <SolidColorBrush x:Key="FieldWash" Color="#0D525C69"/>
+  <SolidColorBrush x:Key="Danger" Color="#B42318"/>
+  <SolidColorBrush x:Key="UnreadRed" Color="#FF5752"/>
+
+  <Style TargetType="Window">
+    <Setter Property="FontFamily" Value="Segoe UI"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Background" Value="{StaticResource AppBackground}"/>
+    <Setter Property="Foreground" Value="{StaticResource Ink}"/>
+    <Setter Property="UseLayoutRounding" Value="True"/>
+    <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+  </Style>
+
+  <Style TargetType="TextBox">
+    <Setter Property="Foreground" Value="{StaticResource Ink}"/>
+    <Setter Property="Background" Value="{StaticResource Surface}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Padding" Value="16,8"/>
+    <Setter Property="MinHeight" Value="40"/>
+    <Setter Property="CaretBrush" Value="{StaticResource Ink}"/>
+    <Setter Property="SelectionBrush" Value="{StaticResource Accent}"/>
+  </Style>
+
+  <Style x:Key="EmbeddedField" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="0,4"/>
+    <Setter Property="MinHeight" Value="24"/>
+  </Style>
+
+  <Style TargetType="PasswordBox">
+    <Setter Property="Foreground" Value="{StaticResource Ink}"/>
+    <Setter Property="Background" Value="{StaticResource Surface}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Padding" Value="16,8"/>
+    <Setter Property="MinHeight" Value="40"/>
+    <Setter Property="CaretBrush" Value="{StaticResource Ink}"/>
+  </Style>
+
+  <Style x:Key="PrimaryButton" TargetType="Button">
+    <Setter Property="Foreground" Value="White"/>
+    <Setter Property="Background" Value="{StaticResource Accent}"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="16,8"/>
+    <Setter Property="MinHeight" Value="40"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Chrome" Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Chrome" Property="Background" Value="{StaticResource AccentHover}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Opacity" Value="0.55"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="RoundButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+    <Setter Property="MinWidth" Value="36"/>
+    <Setter Property="MinHeight" Value="36"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Chrome" Background="{TemplateBinding Background}" CornerRadius="18" MinWidth="36" MinHeight="36">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Chrome" Property="Background" Value="{StaticResource AccentHover}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Opacity" Value="0.45"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="IconButton" TargetType="Button">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Foreground" Value="{StaticResource Date}"/>
+    <Setter Property="MinWidth" Value="32"/>
+    <Setter Property="MinHeight" Value="32"/>
+    <Setter Property="Padding" Value="4"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="FieldClearButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
+    <Setter Property="MinWidth" Value="24"/>
+    <Setter Property="MinHeight" Value="24"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="ToolTip" Value="Очистить"/>
+    <Setter Property="AutomationProperties.Name" Value="Очистить"/>
+  </Style>
+
+  <Style x:Key="GhostButton" TargetType="Button">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border Background="Transparent">
+            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="QuietButton" TargetType="Button">
+    <Setter Property="Foreground" Value="{StaticResource Ink}"/>
+    <Setter Property="Background" Value="{StaticResource Surface}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Padding" Value="16,8"/>
+    <Setter Property="MinHeight" Value="40"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Chrome" Property="Background" Value="{StaticResource Hover}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Opacity" Value="0.55"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="DialogContainer" TargetType="ListBoxItem">
+    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="Margin" Value="4,2"/>
+    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ListBoxItem">
+          <Border x:Name="Row" Background="Transparent" CornerRadius="8" Padding="10,8,8,8" MinHeight="70" ClipToBounds="True">
+            <ContentPresenter/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Row" Property="Background" Value="{StaticResource Hover}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+              <Setter TargetName="Row" Property="Background" Value="{StaticResource Selection}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="DayLabel" TargetType="Border">
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="Padding" Value="20,0"/>
+    <Setter Property="MinHeight" Value="26"/>
+    <Setter Property="CornerRadius" Value="13"/>
+    <Setter Property="Background" Value="{StaticResource DayChip}"/>
+  </Style>
+
+  <ControlTemplate x:Key="ThinScrollVertical" TargetType="ScrollBar">
+    <Track x:Name="PART_Track" IsDirectionReversed="True" Focusable="False">
+      <Track.DecreaseRepeatButton>
+        <RepeatButton Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/>
+      </Track.DecreaseRepeatButton>
+      <Track.Thumb>
+        <Thumb>
+          <Thumb.Template>
+            <ControlTemplate TargetType="Thumb">
+              <Border Background="#C5CAD1" CornerRadius="3" Margin="1,2"/>
+            </ControlTemplate>
+          </Thumb.Template>
+        </Thumb>
+      </Track.Thumb>
+      <Track.IncreaseRepeatButton>
+        <RepeatButton Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/>
+      </Track.IncreaseRepeatButton>
+    </Track>
+  </ControlTemplate>
+
+  <ControlTemplate x:Key="ThinScrollHorizontal" TargetType="ScrollBar">
+    <Track x:Name="PART_Track" IsDirectionReversed="False" Focusable="False">
+      <Track.DecreaseRepeatButton>
+        <RepeatButton Command="ScrollBar.PageLeftCommand" Opacity="0" Focusable="False"/>
+      </Track.DecreaseRepeatButton>
+      <Track.Thumb>
+        <Thumb>
+          <Thumb.Template>
+            <ControlTemplate TargetType="Thumb">
+              <Border Background="#C5CAD1" CornerRadius="3" Margin="2,1"/>
+            </ControlTemplate>
+          </Thumb.Template>
+        </Thumb>
+      </Track.Thumb>
+      <Track.IncreaseRepeatButton>
+        <RepeatButton Command="ScrollBar.PageRightCommand" Opacity="0" Focusable="False"/>
+      </Track.IncreaseRepeatButton>
+    </Track>
+  </ControlTemplate>
+
+  <Style TargetType="ScrollBar">
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
+    <Setter Property="Width" Value="8"/>
+    <Setter Property="MinWidth" Value="8"/>
+    <Setter Property="Template" Value="{StaticResource ThinScrollVertical}"/>
+    <Style.Triggers>
+      <Trigger Property="Orientation" Value="Horizontal">
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="Height" Value="8"/>
+        <Setter Property="MinHeight" Value="8"/>
+        <Setter Property="Template" Value="{StaticResource ThinScrollHorizontal}"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="SideRailButton" TargetType="RadioButton">
+    <Setter Property="Foreground" Value="{StaticResource IconGray}"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="0,12"/>
+    <Setter Property="MinHeight" Value="48"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="RadioButton">
+          <Border x:Name="Chrome" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Chrome" Property="Background" Value="{StaticResource Hover}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+              <Setter TargetName="Chrome" Property="Background" Value="{StaticResource Hover}"/>
+              <Setter Property="Foreground" Value="{StaticResource Accent}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="SideRailAction" TargetType="Button">
+    <Setter Property="Foreground" Value="{StaticResource IconGray}"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Padding" Value="0,12"/>
+    <Setter Property="MinHeight" Value="48"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Cursor" Value="Hand"/>
+    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Chrome" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Chrome" Property="Background" Value="{StaticResource Hover}"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

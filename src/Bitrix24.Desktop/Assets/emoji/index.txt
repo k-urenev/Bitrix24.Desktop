@@ -1,0 +1,1221 @@
+# Смайлы и люди
+1F600	Grinning Face
+1F603	Grinning Face with Big Eyes
+1F604	Grinning Face with Smiling Eyes
+1F601	Beaming Face with Smiling Eyes
+1F606	Grinning Squinting Face
+1F605	Grinning Face with Sweat
+1F602	Face with Tears of Joy
+1F923	Rolling on the Floor Laughing
+1F60A	Smiling Face with Smiling Eyes
+1F607	Smiling Face with Halo
+1F642	Slightly Smiling Face
+1F643	Upside-down Face
+1F609	Winking Face
+1F60C	Relieved Face
+1F60D	Smiling Face with Heart-eyes
+1F970	Smiling Face with Hearts
+1F618	Face Blowing a Kiss
+1F617	Kissing Face
+1F619	Kissing Face with Smiling Eyes
+1F61A	Kissing Face with Closed Eyes
+1F60B	Face Savoring Food
+1F61B	Face with Tongue
+1F61D	Squinting Face with Tongue
+1F61C	Winking Face with Tongue
+1F92A	Zany Face
+1F928	Face with Raised Eyebrow
+1F9D0	Face with Monocle
+1F913	Nerd Face
+1F60E	Smiling Face with Sunglasses
+1F929	Star-struck
+1F973	Partying Face
+1F60F	Smirking Face
+1F612	Unamused Face
+1F61E	Disappointed Face
+1F614	Pensive Face
+1F61F	Worried Face
+1F615	Confused Face
+1F641	Slightly Frowning Face
+1F623	Persevering Face
+1F62B	Tired Face
+1F629	Weary Face
+1F97A	Pleading Face
+1F622	Crying Face
+1F62D	Loudly Crying Face
+1F624	Face with Steam From Nose
+1F620	Angry Face
+1F621	Enraged Face
+1F92C	Face with Symbols on Mouth
+1F92F	Exploding Head
+1F633	Flushed Face
+1F975	Hot Face
+1F976	Cold Face
+1F631	Face Screaming in Fear
+1F628	Fearful Face
+1F630	Anxious Face with Sweat
+1F625	Sad but Relieved Face
+1F613	Downcast Face with Sweat
+1F917	Smiling Face with Open Hands
+1F914	Thinking Face
+1F92D	Face with Hand Over Mouth
+1F92B	Shushing Face
+1F925	Lying Face
+1F636	Face Without Mouth
+1F610	Neutral Face
+1F611	Expressionless Face
+1F62C	Grimacing Face
+1F644	Face with Rolling Eyes
+1F62F	Hushed Face
+1F626	Frowning Face with Open Mouth
+1F627	Anguished Face
+1F62E	Face with Open Mouth
+1F632	Astonished Face
+1F634	Sleeping Face
+1F924	Drooling Face
+1F62A	Sleepy Face
+1F635	Face with Crossed-out Eyes
+1F910	Zipper-mouth Face
+1F974	Woozy Face
+1F922	Nauseated Face
+1F92E	Face Vomiting
+1F927	Sneezing Face
+1F637	Face with Medical Mask
+1F912	Face with Thermometer
+1F915	Face with Head-bandage
+1F911	Money-mouth Face
+1F920	Cowboy Hat Face
+1F608	Smiling Face with Horns
+1F47F	Angry Face with Horns
+1F479	Ogre
+1F47A	Goblin
+1F921	Clown Face
+1F4A9	Pile of Poo
+1F47B	Ghost
+2620	Skull and Crossbones
+1F480	Skull
+1F47D	Alien
+1F47E	Alien Monster
+1F916	Robot
+1F383	Jack-o-lantern
+1F63A	Grinning Cat
+1F638	Grinning Cat with Smiling Eyes
+1F639	Cat with Tears of Joy
+1F63B	Smiling Cat with Heart-eyes
+1F63C	Cat with Wry Smile
+1F63D	Kissing Cat
+1F640	Weary Cat
+1F63F	Crying Cat
+1F63E	Pouting Cat
+1F932	Palms Up Together
+1F450	Open Hands
+1F64C	Raising Hands
+1F44F	Clapping Hands
+1F91D	Handshake
+1F44D	Thumbs Up
+1F44E	Thumbs Down
+1F44A	Oncoming Fist
+270A	Raised Fist
+1F91B	Left-facing Fist
+1F91C	Right-facing Fist
+1F91E	Crossed Fingers
+270C	Victory Hand
+1F91F	Love-you Gesture
+1F918	Sign of the Horns
+1F44C	OK Hand
+1F448	Backhand Index Pointing Left
+1F449	Backhand Index Pointing Right
+1F446	Backhand Index Pointing Up
+1F447	Backhand Index Pointing Down
+1F91A	Raised Back of Hand
+1F590	Hand with Fingers Splayed
+1F596	Vulcan Salute
+1F44B	Waving Hand
+1F919	Call Me Hand
+1F4AA	Flexed Biceps
+1F595	Middle Finger
+270D	Writing Hand
+1F64F	Folded Hands
+1F9B6	Foot
+1F9B5	Leg
+1F484	Lipstick
+1F48B	Kiss Mark
+1F444	Mouth
+1F9B7	Tooth
+1F445	Tongue
+1F443	Nose
+1F463	Footprints
+1F441	Eye
+1F440	Eyes
+1F9E0	Brain
+1F5E3	Speaking Head
+1F464	Bust in Silhouette
+1F465	Busts in Silhouette
+1F476	Baby
+1F467	Girl
+1F9D2	Child
+1F466	Boy
+1F469	Woman
+1F9D1	Person
+1F468	Man
+1F471	Person: Blond Hair
+1F9D4	Person: Beard
+1F475	Old Woman
+1F9D3	Older Person
+1F474	Old Man
+1F472	Person with Skullcap
+1F473	Person Wearing Turban
+1F9D5	Woman with Headscarf
+1F46E	Police Officer
+1F477	Construction Worker
+1F482	Guard
+1F575	Detective
+2695	Medical Symbol
+1F33E	Sheaf of Rice
+1F373	Cooking
+1F393	Graduation Cap
+1F3A4	Microphone
+1F3EB	School
+1F3ED	Factory
+1F4BB	Laptop
+1F4BC	Briefcase
+1F469	Woman
+2764	Red Heart
+1F527	Wrench
+1F52C	Microscope
+1F3A8	Artist Palette
+1F692	Fire Engine
+1F680	Rocket
+1F470	Person with Veil
+1F935	Person in Tuxedo
+1F478	Princess
+1F934	Prince
+1F9B8	Superhero
+1F9B9	Supervillain
+1F936	Mrs. Claus
+1F385	Santa Claus
+1F9D9	Mage
+1F9DD	Elf
+1F9DB	Vampire
+1F9DF	Zombie
+1F9DE	Genie
+1F9DC	Merperson
+1F9DA	Fairy
+1F47C	Baby Angel
+1F930	Pregnant Woman
+1F931	Breast-feeding
+1F647	Person Bowing
+1F481	Person Tipping Hand
+1F645	Person Gesturing NO
+1F646	Person Gesturing OK
+1F64B	Person Raising Hand
+1F926	Person Facepalming
+1F937	Person Shrugging
+1F64E	Person Pouting
+1F64D	Person Frowning
+1F487	Person Getting Haircut
+1F486	Person Getting Massage
+1F9D6	Person in Steamy Room
+1F485	Nail Polish
+1F933	Selfie
+1F483	Woman Dancing
+1F57A	Man Dancing
+1F46F	People with Bunny Ears
+1F574	Person in Suit Levitating
+1F6B6	Person Walking
+1F3C3	Person Running
+1F46B	Woman and Man Holding Hands
+1F46D	Women Holding Hands
+1F46C	Men Holding Hands
+1F491	Couple with Heart
+1F48F	Kiss
+1F46A	Family
+1F9F6	Yarn
+1F9F5	Thread
+1F9E5	Coat
+1F97C	Lab Coat
+1F45A	Woman’S Clothes
+1F455	T-shirt
+1F456	Jeans
+1F454	Necktie
+1F457	Dress
+1F459	Bikini
+1F458	Kimono
+1F97F	Flat Shoe
+1F460	High-heeled Shoe
+1F461	Woman’S Sandal
+1F462	Woman’S Boot
+1F45E	Man’S Shoe
+1F45F	Running Shoe
+1F97E	Hiking Boot
+1F9E6	Socks
+1F9E4	Gloves
+1F9E3	Scarf
+1F3A9	Top Hat
+1F9E2	Billed Cap
+1F452	Woman’S Hat
+1F393	Graduation Cap
+26D1	Rescue Worker’S Helmet
+1F451	Crown
+1F48D	Ring
+1F45D	Clutch Bag
+1F45B	Purse
+1F45C	Handbag
+1F4BC	Briefcase
+1F392	Backpack
+1F9F3	Luggage
+1F453	Glasses
+1F576	Sunglasses
+1F97D	Goggles
+1F302	Closed Umbrella
+# Животные и природа
+1F436	Dog Face
+1F431	Cat Face
+1F42D	Mouse Face
+1F439	Hamster
+1F430	Rabbit Face
+1F98A	Fox
+1F43B	Bear
+1F43C	Panda
+1F428	Koala
+1F42F	Tiger Face
+1F981	Lion
+1F42E	Cow Face
+1F437	Pig Face
+1F43D	Pig Nose
+1F438	Frog
+1F435	Monkey Face
+1F648	See-no-evil Monkey
+1F649	Hear-no-evil Monkey
+1F64A	Speak-no-evil Monkey
+1F412	Monkey
+1F414	Chicken
+1F427	Penguin
+1F426	Bird
+1F424	Baby Chick
+1F423	Hatching Chick
+1F425	Front-facing Baby Chick
+1F986	Duck
+1F985	Eagle
+1F989	Owl
+1F987	Bat
+1F43A	Wolf
+1F417	Boar
+1F434	Horse Face
+1F984	Unicorn
+1F41D	Honeybee
+1F41B	Bug
+1F98B	Butterfly
+1F40C	Snail
+1F41E	Lady Beetle
+1F41C	Ant
+1F99F	Mosquito
+1F997	Cricket
+1F577	Spider
+1F578	Spider Web
+1F982	Scorpion
+1F422	Turtle
+1F40D	Snake
+1F98E	Lizard
+1F996	T-Rex
+1F995	Sauropod
+1F419	Octopus
+1F991	Squid
+1F990	Shrimp
+1F99E	Lobster
+1F980	Crab
+1F421	Blowfish
+1F420	Tropical Fish
+1F41F	Fish
+1F42C	Dolphin
+1F433	Spouting Whale
+1F40B	Whale
+1F988	Shark
+1F40A	Crocodile
+1F405	Tiger
+1F406	Leopard
+1F993	Zebra
+1F98D	Gorilla
+1F418	Elephant
+1F99B	Hippopotamus
+1F98F	Rhinoceros
+1F42A	Camel
+1F42B	Two-hump Camel
+1F992	Giraffe
+1F998	Kangaroo
+1F403	Water Buffalo
+1F402	Ox
+1F404	Cow
+1F40E	Horse
+1F416	Pig
+1F40F	Ram
+1F411	Ewe
+1F999	Llama
+1F410	Goat
+1F98C	Deer
+1F415	Dog
+1F429	Poodle
+1F408	Cat
+1F413	Rooster
+1F983	Turkey
+1F99A	Peacock
+1F99C	Parrot
+1F9A2	Swan
+1F54A	Dove
+1F407	Rabbit
+1F99D	Raccoon
+1F9A1	Badger
+1F401	Mouse
+1F400	Rat
+1F43F	Chipmunk
+1F994	Hedgehog
+1F43E	Paw Prints
+1F409	Dragon
+1F432	Dragon Face
+1F335	Cactus
+1F384	Christmas Tree
+1F332	Evergreen Tree
+1F333	Deciduous Tree
+1F334	Palm Tree
+1F331	Seedling
+1F33F	Herb
+2618	Shamrock
+1F340	Four Leaf Clover
+1F38D	Pine Decoration
+1F38B	Tanabata Tree
+1F343	Leaf Fluttering in Wind
+1F342	Fallen Leaf
+1F341	Maple Leaf
+1F344	Mushroom
+1F41A	Spiral Shell
+1F33E	Sheaf of Rice
+1F490	Bouquet
+1F337	Tulip
+1F339	Rose
+1F940	Wilted Flower
+1F33A	Hibiscus
+1F338	Cherry Blossom
+1F33C	Blossom
+1F33B	Sunflower
+1F31E	Sun with Face
+1F31D	Full Moon Face
+1F31B	First Quarter Moon Face
+1F31C	Last Quarter Moon Face
+1F31A	New Moon Face
+1F315	Full Moon
+1F316	Waning Gibbous Moon
+1F317	Last Quarter Moon
+1F318	Waning Crescent Moon
+1F311	New Moon
+1F312	Waxing Crescent Moon
+1F313	First Quarter Moon
+1F314	Waxing Gibbous Moon
+1F319	Crescent Moon
+1F30E	Globe Showing Americas
+1F30D	Globe Showing Europe-Africa
+1F30F	Globe Showing Asia-Australia
+1F4AB	Dizzy
+2B50	Star
+1F31F	Glowing Star
+2728	Sparkles
+26A1	High Voltage
+2604	Comet
+1F4A5	Collision
+1F525	Fire
+1F32A	Tornado
+1F308	Rainbow
+2600	Sun
+1F324	Sun Behind Small Cloud
+1F325	Sun Behind Large Cloud
+1F326	Sun Behind Rain Cloud
+1F327	Cloud with Rain
+1F329	Cloud with Lightning
+1F328	Cloud with Snow
+2744	Snowflake
+2603	Snowman
+26C4	Snowman Without Snow
+1F32C	Wind Face
+1F4A8	Dashing Away
+1F4A7	Droplet
+1F4A6	Sweat Droplets
+2614	Umbrella with Rain Drops
+2602	Umbrella
+1F30A	Water Wave
+1F32B	Fog
+# Еда и напитки
+1F34F	Green Apple
+1F34E	Red Apple
+1F350	Pear
+1F34A	Tangerine
+1F34B	Lemon
+1F34C	Banana
+1F349	Watermelon
+1F347	Grapes
+1F353	Strawberry
+1F348	Melon
+1F352	Cherries
+1F351	Peach
+1F96D	Mango
+1F34D	Pineapple
+1F965	Coconut
+1F95D	Kiwi Fruit
+1F345	Tomato
+1F346	Eggplant
+1F951	Avocado
+1F966	Broccoli
+1F96C	Leafy Green
+1F952	Cucumber
+1F336	Hot Pepper
+1F33D	Ear of Corn
+1F955	Carrot
+1F954	Potato
+1F360	Roasted Sweet Potato
+1F950	Croissant
+1F96F	Bagel
+1F35E	Bread
+1F956	Baguette Bread
+1F968	Pretzel
+1F9C0	Cheese Wedge
+1F95A	Egg
+1F373	Cooking
+1F95E	Pancakes
+1F953	Bacon
+1F969	Cut of Meat
+1F357	Poultry Leg
+1F356	Meat on Bone
+1F9B4	Bone
+1F32D	Hot Dog
+1F354	Hamburger
+1F35F	French Fries
+1F355	Pizza
+1F96A	Sandwich
+1F959	Stuffed Flatbread
+1F32E	Taco
+1F32F	Burrito
+1F957	Green Salad
+1F958	Shallow Pan of Food
+1F96B	Canned Food
+1F35D	Spaghetti
+1F35C	Steaming Bowl
+1F372	Pot of Food
+1F35B	Curry Rice
+1F363	Sushi
+1F371	Bento Box
+1F95F	Dumpling
+1F364	Fried Shrimp
+1F359	Rice Ball
+1F35A	Cooked Rice
+1F358	Rice Cracker
+1F365	Fish Cake with Swirl
+1F960	Fortune Cookie
+1F96E	Moon Cake
+1F362	Oden
+1F361	Dango
+1F367	Shaved Ice
+1F368	Ice Cream
+1F366	Soft Ice Cream
+1F967	Pie
+1F9C1	Cupcake
+1F370	Shortcake
+1F382	Birthday Cake
+1F36E	Custard
+1F36D	Lollipop
+1F36C	Candy
+1F36B	Chocolate Bar
+1F37F	Popcorn
+1F369	Doughnut
+1F36A	Cookie
+1F330	Chestnut
+1F95C	Peanuts
+1F36F	Honey Pot
+1F95B	Glass of Milk
+1F37C	Baby Bottle
+2615	Hot Beverage
+1F375	Teacup Without Handle
+1F964	Cup with Straw
+1F376	Sake
+1F37A	Beer Mug
+1F37B	Clinking Beer Mugs
+1F942	Clinking Glasses
+1F377	Wine Glass
+1F943	Tumbler Glass
+1F378	Cocktail Glass
+1F379	Tropical Drink
+1F37E	Bottle with Popping Cork
+1F944	Spoon
+1F374	Fork and Knife
+1F37D	Fork and Knife with Plate
+1F963	Bowl with Spoon
+1F961	Takeout Box
+1F962	Chopsticks
+1F9C2	Salt
+# Хобби и спорт
+26BD	Soccer Ball
+1F3C0	Basketball
+1F3C8	American Football
+26BE	Baseball
+1F94E	Softball
+1F3BE	Tennis
+1F3D0	Volleyball
+1F3C9	Rugby Football
+1F94F	Flying Disc
+1F3B1	Pool 8 Ball
+1F3D3	Ping Pong
+1F3F8	Badminton
+1F3D2	Ice Hockey
+1F3D1	Field Hockey
+1F94D	Lacrosse
+1F3CF	Cricket Game
+1F945	Goal Net
+26F3	Flag in Hole
+1F3F9	Bow and Arrow
+1F3A3	Fishing Pole
+1F94A	Boxing Glove
+1F94B	Martial Arts Uniform
+1F3BD	Running Shirt
+1F6F9	Skateboard
+1F6F7	Sled
+26F8	Ice Skate
+1F94C	Curling Stone
+1F3BF	Skis
+26F7	Skier
+1F3C2	Snowboarder
+1F3CB	Person Lifting Weights
+1F93C	People Wrestling
+1F938	Person Cartwheeling
+26F9	Person Bouncing Ball
+1F93A	Person Fencing
+1F93E	Person Playing Handball
+1F3CC	Person Golfing
+1F3C7	Horse Racing
+1F9D8	Person in Lotus Position
+1F3C4	Person Surfing
+1F3CA	Person Swimming
+1F93D	Person Playing Water Polo
+1F6A3	Person Rowing Boat
+1F9D7	Person Climbing
+1F6B5	Person Mountain Biking
+1F6B4	Person Biking
+1F3C6	Trophy
+1F947	1St Place Medal
+1F948	2Nd Place Medal
+1F949	3Rd Place Medal
+1F3C5	Sports Medal
+1F396	Military Medal
+1F3F5	Rosette
+1F397	Reminder Ribbon
+1F3AB	Ticket
+1F39F	Admission Tickets
+1F3AA	Circus Tent
+1F939	Person Juggling
+1F3AD	Performing Arts
+1F3A8	Artist Palette
+1F3AC	Clapper Board
+1F3A4	Microphone
+1F3A7	Headphone
+1F3BC	Musical Score
+1F3B9	Musical Keyboard
+1F941	Drum
+1F3B7	Saxophone
+1F3BA	Trumpet
+1F3B8	Guitar
+1F3BB	Violin
+1F3B2	Game Die
+265F	Chess Pawn
+1F3AF	Bullseye
+1F3B3	Bowling
+1F3AE	Video Game
+1F3B0	Slot Machine
+1F9E9	Puzzle Piece
+# Места и путешествия
+1F697	Automobile
+1F695	Taxi
+1F699	Sport Utility Vehicle
+1F68C	Bus
+1F68E	Trolleybus
+1F3CE	Racing Car
+1F693	Police Car
+1F691	Ambulance
+1F692	Fire Engine
+1F690	Minibus
+1F69A	Delivery Truck
+1F69B	Articulated Lorry
+1F69C	Tractor
+1F6F4	Kick Scooter
+1F6B2	Bicycle
+1F6F5	Motor Scooter
+1F3CD	Motorcycle
+1F6A8	Police Car Light
+1F694	Oncoming Police Car
+1F68D	Oncoming Bus
+1F698	Oncoming Automobile
+1F696	Oncoming Taxi
+1F6A1	Aerial Tramway
+1F6A0	Mountain Cableway
+1F69F	Suspension Railway
+1F683	Railway Car
+1F68B	Tram Car
+1F69E	Mountain Railway
+1F69D	Monorail
+1F684	High-speed Train
+1F685	Bullet Train
+1F688	Light Rail
+1F682	Locomotive
+1F686	Train
+1F687	Metro
+1F68A	Tram
+1F689	Station
+2708	Airplane
+1F6EB	Airplane Departure
+1F6EC	Airplane Arrival
+1F6E9	Small Airplane
+1F4BA	Seat
+1F6F0	Satellite
+1F680	Rocket
+1F6F8	Flying Saucer
+1F681	Helicopter
+1F6F6	Canoe
+26F5	Sailboat
+1F6A4	Speedboat
+1F6E5	Motor Boat
+1F6F3	Passenger Ship
+26F4	Ferry
+1F6A2	Ship
+2693	Anchor
+26FD	Fuel Pump
+1F6A7	Construction
+1F6A6	Vertical Traffic Light
+1F6A5	Horizontal Traffic Light
+1F68F	Bus Stop
+1F5FA	World Map
+1F5FF	Moai
+1F5FD	Statue of Liberty
+1F5FC	Tokyo Tower
+1F3F0	Castle
+1F3EF	Japanese Castle
+1F3DF	Stadium
+1F3A1	Ferris Wheel
+1F3A2	Roller Coaster
+1F3A0	Carousel Horse
+26F2	Fountain
+26F1	Umbrella on Ground
+1F3D6	Beach with Umbrella
+1F3DD	Desert Island
+1F3DC	Desert
+1F30B	Volcano
+26F0	Mountain
+1F3D4	Snow-capped Mountain
+1F5FB	Mount Fuji
+1F3D5	Camping
+26FA	Tent
+1F3E0	House
+1F3E1	House with Garden
+1F3D8	Houses
+1F3DA	Derelict House
+1F3D7	Building Construction
+1F3ED	Factory
+1F3E2	Office Building
+1F3EC	Department Store
+1F3E3	Japanese Post Office
+1F3E4	Post Office
+1F3E5	Hospital
+1F3E6	Bank
+1F3E8	Hotel
+1F3EA	Convenience Store
+1F3EB	School
+1F3E9	Love Hotel
+1F492	Wedding
+1F3DB	Classical Building
+26EA	Church
+1F54C	Mosque
+1F54D	Synagogue
+1F54B	Kaaba
+26E9	Shinto Shrine
+1F6E4	Railway Track
+1F6E3	Motorway
+1F5FE	Map of Japan
+1F391	Moon Viewing Ceremony
+1F3DE	National Park
+1F305	Sunrise
+1F304	Sunrise Over Mountains
+1F320	Shooting Star
+1F387	Sparkler
+1F386	Fireworks
+1F307	Sunset
+1F306	Cityscape at Dusk
+1F3D9	Cityscape
+1F303	Night with Stars
+1F30C	Milky Way
+1F309	Bridge at Night
+1F301	Foggy
+# Объекты
+231A	Watch
+1F4F1	Mobile Phone
+1F4F2	Mobile Phone with Arrow
+1F4BB	Laptop
+2328	Keyboard
+1F5A5	Desktop Computer
+1F5A8	Printer
+1F5B1	Computer Mouse
+1F5B2	Trackball
+1F579	Joystick
+1F5DC	Clamp
+1F4BD	Computer Disk
+1F4BE	Floppy Disk
+1F4BF	Optical Disk
+1F4C0	Dvd
+1F4FC	Videocassette
+1F4F7	Camera
+1F4F8	Camera with Flash
+1F4F9	Video Camera
+1F3A5	Movie Camera
+1F4FD	Film Projector
+1F39E	Film Frames
+1F4DE	Telephone Receiver
+260E	Telephone
+1F4DF	Pager
+1F4E0	Fax Machine
+1F4FA	Television
+1F4FB	Radio
+1F399	Studio Microphone
+1F39A	Level Slider
+1F39B	Control Knobs
+1F9ED	Compass
+23F1	Stopwatch
+23F2	Timer Clock
+23F0	Alarm Clock
+1F570	Mantelpiece Clock
+231B	Hourglass Done
+23F3	Hourglass Not Done
+1F4E1	Satellite Antenna
+1F50B	Battery
+1F50C	Electric Plug
+1F4A1	Light Bulb
+1F526	Flashlight
+1F56F	Candle
+1F9EF	Fire Extinguisher
+1F6E2	Oil Drum
+1F4B8	Money with Wings
+1F4B5	Dollar Banknote
+1F4B4	Yen Banknote
+1F4B6	Euro Banknote
+1F4B7	Pound Banknote
+1F4B0	Money Bag
+1F4B3	Credit Card
+1F48E	Gem Stone
+2696	Balance Scale
+1F9F0	Toolbox
+1F527	Wrench
+1F528	Hammer
+2692	Hammer and Pick
+1F6E0	Hammer and Wrench
+26CF	Pick
+1F529	Nut and Bolt
+2699	Gear
+1F9F1	Brick
+26D3	Chains
+1F9F2	Magnet
+1F52B	Water Pistol
+1F4A3	Bomb
+1F9E8	Firecracker
+1F52A	Kitchen Knife
+1F5E1	Dagger
+2694	Crossed Swords
+1F6E1	Shield
+1F6AC	Cigarette
+26B0	Coffin
+26B1	Funeral Urn
+1F3FA	Amphora
+1F52E	Crystal Ball
+1F4FF	Prayer Beads
+1F9FF	Nazar Amulet
+1F488	Barber Pole
+2697	Alembic
+1F52D	Telescope
+1F52C	Microscope
+1F573	Hole
+1F48A	Pill
+1F489	Syringe
+1F9EC	Dna
+1F9A0	Microbe
+1F9EB	Petri Dish
+1F9EA	Test Tube
+1F321	Thermometer
+1F9F9	Broom
+1F9FA	Basket
+1F9FB	Roll of Paper
+1F6BD	Toilet
+1F6B0	Potable Water
+1F6BF	Shower
+1F6C1	Bathtub
+1F6C0	Person Taking Bath
+1F9FC	Soap
+1F9FD	Sponge
+1F9F4	Lotion Bottle
+1F6CE	Bellhop Bell
+1F511	Key
+1F5DD	Old Key
+1F6AA	Door
+1F6CB	Couch and Lamp
+1F6CF	Bed
+1F6CC	Person in Bed
+1F9F8	Teddy Bear
+1F5BC	Framed Picture
+1F6CD	Shopping Bags
+1F6D2	Shopping Cart
+1F381	Wrapped Gift
+1F388	Balloon
+1F38F	Carp Streamer
+1F380	Ribbon
+1F38A	Confetti Ball
+1F389	Party Popper
+1F38E	Japanese Dolls
+1F3EE	Red Paper Lantern
+1F390	Wind Chime
+1F9E7	Red Envelope
+2709	Envelope
+1F4E9	Envelope with Arrow
+1F4E8	Incoming Envelope
+1F4E7	E-mail
+1F48C	Love Letter
+1F4E5	Inbox Tray
+1F4E4	Outbox Tray
+1F4E6	Package
+1F3F7	Label
+1F4EA	Closed Mailbox with Lowered Flag
+1F4EB	Closed Mailbox with Raised Flag
+1F4EC	Open Mailbox with Raised Flag
+1F4ED	Open Mailbox with Lowered Flag
+1F4EE	Postbox
+1F4EF	Postal Horn
+1F4DC	Scroll
+1F4C3	Page with Curl
+1F4C4	Page Facing Up
+1F4D1	Bookmark Tabs
+1F9FE	Receipt
+1F4CA	Bar Chart
+1F4C8	Chart Increasing
+1F4C9	Chart Decreasing
+1F5D2	Spiral Notepad
+1F5D3	Spiral Calendar
+1F4C6	Tear-off Calendar
+1F4C5	Calendar
+1F5D1	Wastebasket
+1F4C7	Card Index
+1F5C3	Card File Box
+1F5F3	Ballot Box with Ballot
+1F5C4	File Cabinet
+1F4CB	Clipboard
+1F4C1	File Folder
+1F4C2	Open File Folder
+1F5C2	Card Index Dividers
+1F5DE	Rolled-up Newspaper
+1F4F0	Newspaper
+1F4D3	Notebook
+1F4D4	Notebook with Decorative Cover
+1F4D2	Ledger
+1F4D5	Closed Book
+1F4D7	Green Book
+1F4D8	Blue Book
+1F4D9	Orange Book
+1F4DA	Books
+1F4D6	Open Book
+1F516	Bookmark
+1F9F7	Safety Pin
+1F517	Link
+1F4CE	Paperclip
+1F587	Linked Paperclips
+1F4D0	Triangular Ruler
+1F4CF	Straight Ruler
+1F4CC	Pushpin
+1F4CD	Round Pushpin
+2702	Scissors
+1F58A	Pen
+1F58B	Fountain Pen
+2712	Black Nib
+1F58C	Paintbrush
+1F58D	Crayon
+1F4DD	Memo
+270F	Pencil
+1F50D	Magnifying Glass Tilted Left
+1F50E	Magnifying Glass Tilted Right
+1F50F	Locked with Pen
+1F510	Locked with Key
+1F512	Locked
+1F513	Unlocked
+# Символы
+2764	Red Heart
+1F9E1	Orange Heart
+1F49B	Yellow Heart
+1F49A	Green Heart
+1F499	Blue Heart
+1F49C	Purple Heart
+1F5A4	Black Heart
+1F494	Broken Heart
+2763	Heart Exclamation
+1F495	Two Hearts
+1F49E	Revolving Hearts
+1F493	Beating Heart
+1F497	Growing Heart
+1F496	Sparkling Heart
+1F498	Heart with Arrow
+1F49D	Heart with Ribbon
+1F49F	Heart Decoration
+262E	Peace Symbol
+271D	Latin Cross
+262A	Star and Crescent
+1F549	Om
+2638	Wheel of Dharma
+2721	Star of David
+1F52F	Dotted Six-pointed Star
+1F54E	Menorah
+262F	Yin Yang
+2626	Orthodox Cross
+1F6D0	Place of Worship
+26CE	Ophiuchus
+2648	Aries
+2649	Taurus
+264A	Gemini
+264B	Cancer
+264C	Leo
+264D	Virgo
+264E	Libra
+264F	Scorpio
+2650	Sagittarius
+2651	Capricorn
+2652	Aquarius
+2653	Pisces
+1F194	ID Button
+269B	Atom Symbol
+1F251	Japanese “Acceptable” Button
+2622	Radioactive
+2623	Biohazard
+1F4F4	Mobile Phone Off
+1F4F3	Vibration Mode
+1F236	Japanese “Not Free of Charge” Button
+1F21A	Japanese “Free of Charge” Button
+1F238	Japanese “Application” Button
+1F23A	Japanese “Open for Business” Button
+1F237	Japanese “Monthly Amount” Button
+2734	Eight-pointed Star
+1F19A	VS Button
+1F4AE	White Flower
+1F250	Japanese “Bargain” Button
+3299	Japanese “Secret” Button
+3297	Japanese “Congratulations” Button
+1F234	Japanese “Passing Grade” Button
+1F235	Japanese “No Vacancy” Button
+1F239	Japanese “Discount” Button
+1F232	Japanese “Prohibited” Button
+1F170	A Button (Blood Type)
+1F171	B Button (Blood Type)
+1F18E	AB Button (Blood Type)
+1F191	CL Button
+1F17E	O Button (Blood Type)
+1F198	SOS Button
+274C	Cross Mark
+2B55	Hollow Red Circle
+1F6D1	Stop Sign
+26D4	No Entry
+1F4DB	Name Badge
+1F6AB	Prohibited
+1F4AF	Hundred Points
+1F4A2	Anger Symbol
+2668	Hot Springs
+1F6B7	No Pedestrians
+1F6AF	No Littering
+1F6B3	No Bicycles
+1F6B1	Non-potable Water
+1F51E	No One Under Eighteen
+1F4F5	No Mobile Phones
+1F6AD	No Smoking
+2757	Red Exclamation Mark
+2755	White Exclamation Mark
+2753	Red Question Mark
+2754	White Question Mark
+203C	Double Exclamation Mark
+2049	Exclamation Question Mark
+1F505	Dim Button
+1F506	Bright Button
+303D	Part Alternation Mark
+26A0	Warning
+1F6B8	Children Crossing
+1F531	Trident Emblem
+269C	Fleur-de-lis
+1F530	Japanese Symbol for Beginner
+267B	Recycling Symbol
+2705	Check Mark Button
+1F22F	Japanese “Reserved” Button
+1F4B9	Chart Increasing with Yen
+2747	Sparkle
+2733	Eight-spoked Asterisk
+274E	Cross Mark Button
+1F310	Globe with Meridians
+1F4A0	Diamond with a Dot
+24C2	Circled M
+1F300	Cyclone
+1F4A4	ZZZ
+1F3E7	ATM Sign
+1F6BE	Water Closet
+267F	Wheelchair Symbol
+1F17F	P Button
+1F233	Japanese “Vacancy” Button
+1F202	Japanese “Service Charge” Button
+1F6C2	Passport Control
+1F6C3	Customs
+1F6C4	Baggage Claim
+1F6C5	Left Luggage
+1F6B9	Men’S Room
+1F6BA	Women’S Room
+1F6BC	Baby Symbol
+1F6BB	Restroom
+1F6AE	Litter in Bin Sign
+1F3A6	Cinema
+1F4F6	Antenna Bars
+1F201	Japanese “Here” Button
+1F523	Input Symbols
+2139	Information
+1F524	Input Latin Letters
+1F521	Input Latin Lowercase
+1F520	Input Latin Uppercase
+1F196	NG Button
+1F197	OK Button
+1F199	UP! Button
+1F192	COOL Button
+1F195	NEW Button
+1F193	FREE Button
+0030	Digit Zero
+0031	Digit One
+0032	Digit Two
+0033	Digit Three
+0034	Digit Four
+0035	Digit Five
+0036	Digit Six
+0037	Digit Seven
+0038	Digit Eight
+0039	Digit Nine
+1F51F	Keycap: 10
+1F522	Input Numbers
+0023	Number Sign
+002A	Asterisk
+23CF	Eject Button
+25B6	Play Button
+23F8	Pause Button
+23EF	Play or Pause Button
+23F9	Stop Button
+23FA	Record Button
+23ED	Next Track Button
+23EE	Last Track Button
+23E9	Fast-forward Button
+23EA	Fast Reverse Button
+23EB	Fast Up Button
+23EC	Fast Down Button
+25C0	Reverse Button
+1F53C	Upwards Button
+1F53D	Downwards Button
+27A1	Right Arrow
+2B05	Left Arrow
+2B06	Up Arrow
+2B07	Down Arrow
+2197	Up-right Arrow
+2198	Down-right Arrow
+2199	Down-left Arrow
+2196	Up-left Arrow
+2195	Up-down Arrow
+2194	Left-right Arrow
+21AA	Left Arrow Curving Right
+21A9	Right Arrow Curving Left
+2934	Right Arrow Curving Up
+2935	Right Arrow Curving Down
+1F500	Shuffle Tracks Button
+1F501	Repeat Button
+1F502	Repeat Single Button
+1F504	Counterclockwise Arrows Button
+1F503	Clockwise Vertical Arrows
+1F3B5	Musical Note
+1F3B6	Musical Notes
+2795	Plus
+2796	Minus
+2797	Divide
+2716	Multiply
+267E	Infinity
+1F4B2	Heavy Dollar Sign
+1F4B1	Currency Exchange
+2122	Trade Mark
+00A9	Copyright
+00AE	Registered
+1F441	Eye
+1F5E8	Left Speech Bubble
+1F51A	END Arrow
+1F519	BACK Arrow
+1F51B	ON! Arrow
+1F51D	TOP Arrow
+1F51C	SOON Arrow
+3030	Wavy Dash
+27B0	Curly Loop
+27BF	Double Curly Loop
+2714	Check Mark
+2611	Check Box with Check
+1F518	Radio Button
+26AA	White Circle
+26AB	Black Circle
+1F534	Red Circle
+1F535	Blue Circle
+1F53A	Red Triangle Pointed Up
+1F53B	Red Triangle Pointed Down
+1F538	Small Orange Diamond
+1F539	Small Blue Diamond
+1F536	Large Orange Diamond
+1F537	Large Blue Diamond
+1F533	White Square Button
+1F532	Black Square Button
+25AA	Black Small Square
+25AB	White Small Square
+25FE	Black Medium-small Square
+25FD	White Medium-small Square
+25FC	Black Medium Square
+25FB	White Medium Square
+2B1B	Black Large Square
+2B1C	White Large Square
+1F508	Speaker Low Volume
+1F507	Muted Speaker
+1F509	Speaker Medium Volume
+1F50A	Speaker High Volume
+1F514	Bell
+1F515	Bell with Slash
+1F4E3	Megaphone
+1F4E2	Loudspeaker
+1F4AC	Speech Balloon
+1F4AD	Thought Balloon
+1F5EF	Right Anger Bubble
+2660	Spade Suit
+2663	Club Suit
+2665	Heart Suit
+2666	Diamond Suit
+1F0CF	Joker
+1F3B4	Flower Playing Cards
+1F004	Mahjong Red Dragon
+1F550	One O’Clock
+1F551	Two O’Clock
+1F552	Three O’Clock
+1F553	Four O’Clock
+1F554	Five O’Clock
+1F555	Six O’Clock
+1F556	Seven O’Clock
+1F557	Eight O’Clock
+1F558	Nine O’Clock
+1F559	Ten O’Clock
+1F55A	Eleven O’Clock
+1F55B	Twelve O’Clock
+1F55C	One-thirty
+1F55D	Two-thirty
+1F55E	Three-thirty
+1F55F	Four-thirty
+1F560	Five-thirty
+1F561	Six-thirty
+1F562	Seven-thirty
+1F563	Eight-thirty
+1F564	Nine-thirty
+1F565	Ten-thirty
+1F566	Eleven-thirty
+1F567	Twelve-thirty

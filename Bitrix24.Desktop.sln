@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bitrix24.Desktop.Core", "src\Bitrix24.Desktop.Core\Bitrix24.Desktop.Core.csproj", "{C3A1E5B2-4D67-4F18-9A0E-7B2D6F1A8C34}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bitrix24.Desktop", "src\Bitrix24.Desktop\Bitrix24.Desktop.csproj", "{A9D4C2E1-6B58-4E27-8F01-3C5A7D9E2B46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bitrix24.Desktop.Core.Tests", "tests\Bitrix24.Desktop.Core.Tests\Bitrix24.Desktop.Core.Tests.csproj", "{E7B2A1C4-8F36-4D59-A1E0-5C8B3F6D2A17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3A1E5B2-4D67-4F18-9A0E-7B2D6F1A8C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A1E5B2-4D67-4F18-9A0E-7B2D6F1A8C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A1E5B2-4D67-4F18-9A0E-7B2D6F1A8C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A1E5B2-4D67-4F18-9A0E-7B2D6F1A8C34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D4C2E1-6B58-4E27-8F01-3C5A7D9E2B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D4C2E1-6B58-4E27-8F01-3C5A7D9E2B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D4C2E1-6B58-4E27-8F01-3C5A7D9E2B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D4C2E1-6B58-4E27-8F01-3C5A7D9E2B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7B2A1C4-8F36-4D59-A1E0-5C8B3F6D2A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B2A1C4-8F36-4D59-A1E0-5C8B3F6D2A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B2A1C4-8F36-4D59-A1E0-5C8B3F6D2A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B2A1C4-8F36-4D59-A1E0-5C8B3F6D2A17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

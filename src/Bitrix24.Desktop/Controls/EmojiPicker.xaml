@@ -1,0 +1,63 @@
+<UserControl x:Class="Bitrix24.Desktop.Controls.EmojiPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <UserControl.Resources>
+    <Style x:Key="EmojiCategory" TargetType="Button">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Foreground" Value="{StaticResource Ink}"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="12,4"/>
+      <Setter Property="MinHeight" Value="28"/>
+      <Setter Property="Margin" Value="0,0,8,8"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Focusable" Value="False"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="EmojiCell" TargetType="Button">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="4"/>
+      <Setter Property="Margin" Value="4"/>
+      <Setter Property="MinWidth" Value="36"/>
+      <Setter Property="MinHeight" Value="36"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Focusable" Value="False"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Chrome" Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Chrome" Property="Background" Value="#1400ACE3"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+  <Border Width="376" Margin="12" Padding="8" Background="{StaticResource Surface}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="12">
+    <Border.Effect>
+      <DropShadowEffect BlurRadius="16" ShadowDepth="2" Opacity="0.16" Color="#101828"/>
+    </Border.Effect>
+    <Grid>
+      <DockPanel x:Name="Body">
+        <WrapPanel x:Name="Categories" DockPanel.Dock="Top"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" MaxHeight="320">
+          <WrapPanel x:Name="Cells"/>
+        </ScrollViewer>
+      </DockPanel>
+      <TextBlock x:Name="EmptyLabel" Text="Картинки смайлов не найдены" TextWrapping="Wrap" Foreground="{StaticResource Muted}" Visibility="Collapsed"/>
+    </Grid>
+  </Border>
+</UserControl>

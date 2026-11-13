@@ -1,0 +1,32 @@
+---
+description: Мелкие правки интерфейса и немедленная публикация exe
+alwaysApply: true
+---
+
+# Мелкие правки и exe
+
+Интерфейс: лента — `MessageBody`, окно — `MainWindow.xaml`, поле ввода — `EmojiBox`. Карта файлов — раздел «Интерфейс» в `docs/architecture.md`.
+
+Для мелкой правки экрана меняй только место, которое рисует элемент. Хранилище и `TextCleaner` не трогай, пока видимый текст уже не потерян. Не ищи, как то же сделано в веб-клиенте Битрикс24.
+
+Каждое изменение программы дописывай в ту часть `docs/tz`, которую оно меняет, тем же заходом. Формулировка как у соседних абзацев: что видит пользователь и что программа после этого делает. Старую фразу, которая уже не совпадает с программой, замени. Части, которых правка не коснулась, не переписывай.
+
+После правки кода сразу публикуй exe, из которого запускают приложение. Сборка в `bin` его не заменяет. Перед публикацией попроси уже запущенный экземпляр завершиться: `Bitrix24.Desktop.exe --exit`. Он снимает значок из трея тем же путём, что пункт «Выход», и закрывает процесс. Принудительно останавливай процесс только если он не вышел сам: каталог совпадает с запущенным файлом.
+
+```powershell
+$env:Path = "$env:LOCALAPPDATA\Microsoft\dotnet;" + $env:Path
+$exe = "$env:USERPROFILE\Desktop\Bitrix24\Bitrix24.Desktop.exe"
+if ((Test-Path $exe) -and (Get-Process -Name Bitrix24.Desktop -ErrorAction SilentlyContinue)) {
+    & $exe --exit
+    $deadline = (Get-Date).AddSeconds(8)
+    while ((Get-Process -Name Bitrix24.Desktop -ErrorAction SilentlyContinue) -and (Get-Date) -lt $deadline) {
+        Start-Sleep -Milliseconds 200
+    }
+}
+Stop-Process -Name Bitrix24.Desktop -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 1
+dotnet publish src\Bitrix24.Desktop\Bitrix24.Desktop.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -p:DebugType=none -p:DebugSymbols=false -o "$env:USERPROFILE\Desktop\Bitrix24"
+Remove-Item "$env:USERPROFILE\Desktop\Bitrix24\*.xml" -ErrorAction SilentlyContinue
+```
+
+Рабочий каталог — корень репозитория. Готовый файл: `%USERPROFILE%\Desktop\Bitrix24\Bitrix24.Desktop.exe`.

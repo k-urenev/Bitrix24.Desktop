@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+TestResults/
+*.log
+src/Bitrix24.Desktop/BuiltInPortal.cs
+tmpq/
+tmp_query.ps1
+tmp_query.py
+auth.bin
+*.db

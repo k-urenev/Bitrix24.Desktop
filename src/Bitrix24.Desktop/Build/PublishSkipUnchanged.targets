@@ -1,0 +1,21 @@
+<Project>
+  <!--
+    SDK copies the whole PreserveNewest set when any one file is newer, so a
+    code change rewrites the .NET and WPF runtime. Skip files that already match.
+  -->
+  <Target Name="_CopyResolvedFilesToPublishPreserveNewest"
+          DependsOnTargets="_ComputeResolvedFilesToPublishTypes"
+          Inputs="@(_ResolvedFileToPublishPreserveNewest)"
+          Outputs="@(_ResolvedFileToPublishPreserveNewest->'$(PublishDir)%(RelativePath)')">
+    <Copy SourceFiles="@(_ResolvedFileToPublishPreserveNewest)"
+          DestinationFiles="@(_ResolvedFileToPublishPreserveNewest->'$(PublishDir)%(RelativePath)')"
+          SkipUnchangedFiles="true"
+          OverwriteReadOnlyFiles="$(OverwriteReadOnlyFiles)"
+          Retries="$(CopyRetryCount)"
+          RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"
+          UseHardlinksIfPossible="$(CreateHardLinksForPublishFilesIfPossible)"
+          UseSymboliclinksIfPossible="$(CreateSymbolicLinksForPublishFilesIfPossible)">
+      <Output TaskParameter="DestinationFiles" ItemName="FileWrites" />
+    </Copy>
+  </Target>
+</Project>
