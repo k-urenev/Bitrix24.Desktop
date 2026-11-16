@@ -117,28 +117,66 @@ public sealed class AppHost
         try
         {
             await RightsRenewal.TryAsync(_sessions, _oauth, CancellationToken.None);
-            session = _sessions.Current;
-            if (string.IsNullOrWhiteSpace(session.AccessToken) || session.AccessTokenExpiresAt <= DateTimeOffset.UtcNow.AddMinutes(2))
-            {
-                var refreshed = await _oauth.RefreshAsync(session, CancellationToken.None);
-                _sessions.Replace(refreshed);
-            }
-
-            if (_sessions.Current.UserId == 0)
-                await LoadProfileAsync(CancellationToken.None);
-
-            if (showWindow)
-                ShowMainWindow();
-            else
-                EnsureMainWindow();
-            _poller.Start();
+            await RefreshIfNeededAsync();
+            await LoadProfileIfNeededAsync();
+            OpenWorking(showWindow);
         }
-        catch (Exception exception)
+        catch (BitrixException exception) when (exception.IsAuthFailure)
         {
             FileLog.Write(exception);
             _sessions.ClearTokens();
             await ShowLoginAsync("Сессия истекла. Войдите снова.");
         }
+        catch (Exception exception)
+        {
+            FileLog.Write(exception);
+            if (!_sessions.Current.HasRefreshToken)
+            {
+                _sessions.ClearTokens();
+                await ShowLoginAsync("Сессия истекла. Войдите снова.");
+                return;
+            }
+
+            OpenWorking(showWindow);
+        }
+    }
+
+    private async Task RefreshIfNeededAsync()
+    {
+        var session = _sessions.Current;
+        if (!string.IsNullOrWhiteSpace(session.AccessToken)
+            && session.AccessTokenExpiresAt > DateTimeOffset.UtcNow.AddMinutes(2))
+            return;
+
+        try
+        {
+            var refreshed = await _oauth.RefreshAsync(session, CancellationToken.None);
+            _sessions.Replace(refreshed);
+        }
+        catch (BitrixException exception) when (!exception.IsAuthFailure)
+        {
+            FileLog.Write(exception.Message);
+        }
+    }
+
+    private async Task LoadProfileIfNeededAsync()
+    {
+        var session = _sessions.Current;
+        if (session.UserId != 0)
+            return;
+        if (string.IsNullOrWhiteSpace(session.AccessToken) || session.AccessTokenExpiresAt <= DateTimeOffset.UtcNow)
+            return;
+
+        await LoadProfileAsync(CancellationToken.None);
+    }
+
+    private void OpenWorking(bool showWindow)
+    {
+        if (showWindow)
+            ShowMainWindow();
+        else
+            EnsureMainWindow();
+        _poller.Start();
     }
 
     private void AdoptTrayAutostart()

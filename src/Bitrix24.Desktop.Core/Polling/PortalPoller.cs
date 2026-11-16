@@ -52,6 +52,11 @@ public sealed class PortalPoller
             _pullUnavailable = true;
             StatusChanged?.Invoke(this, LinkedStatus());
         };
+        _pull.Restored += (_, _) =>
+        {
+            _pullUnavailable = false;
+            StatusChanged?.Invoke(this, LinkedStatus());
+        };
     }
 
     public event EventHandler<IReadOnlyList<DialogSummary>>? DialogsRefreshed;

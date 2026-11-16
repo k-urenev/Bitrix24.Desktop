@@ -6,5 +6,5 @@ public static class AppRelease
 {
     public static string Version { get; } =
         typeof(AppRelease).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
-        ?? "1.0.4";
+        ?? "1.0.5";
 }

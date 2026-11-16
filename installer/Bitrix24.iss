@@ -4,7 +4,7 @@
 #endif
 
 #define AppName "Битрикс24"
-#define AppRelease "1.0.4"
+#define AppRelease "1.0.5"
 #define AppSignature "Неофициальная сборка Битрикс24 Мессенджера"
 
 [Setup]

@@ -289,8 +289,25 @@ public sealed class BitrixRestClient
             && session.AccessTokenExpiresAt > DateTimeOffset.UtcNow.AddMinutes(2))
             return;
 
-        await RefreshAsync(cancellationToken);
+        try
+        {
+            await RefreshAsync(cancellationToken);
+        }
+        catch (BitrixException exception) when (!exception.IsAuthFailure)
+        {
+            if (AccessTokenStillValid(session))
+            {
+                FileLog.Write(exception.Message);
+                return;
+            }
+
+            throw;
+        }
     }
+
+    private static bool AccessTokenStillValid(StoredSession session) =>
+        !string.IsNullOrWhiteSpace(session.AccessToken)
+        && session.AccessTokenExpiresAt > DateTimeOffset.UtcNow;
 
     private async Task RefreshAsync(CancellationToken cancellationToken)
     {

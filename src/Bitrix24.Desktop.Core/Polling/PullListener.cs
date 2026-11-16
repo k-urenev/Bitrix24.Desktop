@@ -6,13 +6,13 @@ namespace Bitrix24.Desktop.Core.Polling;
 
 public sealed class PullListener
 {
-    public const int RestoreLimit = 3;
     public static readonly TimeSpan Silence = TimeSpan.FromSeconds(25);
 
     private readonly BitrixApi _api;
     private int _loggedConnect;
     private int _restores;
     private bool _held;
+    private bool _down;
 
     public PullListener(BitrixApi api) => _api = api;
 
@@ -21,12 +21,12 @@ public sealed class PullListener
     public event EventHandler<WritingSignal>? Writing;
     public event EventHandler? AuthenticationLost;
     public event EventHandler<string>? Unavailable;
+    public event EventHandler? Restored;
 
     public async Task RunAsync(CancellationToken cancellationToken)
     {
         using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(75) };
-        var blocked = 0;
-        var longPollUntil = DateTimeOffset.MinValue;
+        var route = new ChannelRoute();
         string? mid = null;
 
         if (!await ScopeAllowsPullAsync(cancellationToken))
@@ -34,103 +34,133 @@ public sealed class PullListener
 
         while (!cancellationToken.IsCancellationRequested)
         {
-            PullSession? session;
-            try
-            {
-                session = await _api.GetPullSessionAsync(cancellationToken);
-            }
-            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-            {
+            var loaded = await LoadConfigAsync(cancellationToken);
+            if (loaded.Stop)
                 break;
-            }
-            catch (BitrixException exception) when (exception.IsAuthFailure)
-            {
-                FileLog.Write(exception.Message);
-                AuthenticationLost?.Invoke(this, EventArgs.Empty);
+            if (loaded.Session is null)
+                continue;
+
+            var step = await FollowAsync(http, loaded.Session, mid, route, cancellationToken);
+            mid = step.Mid;
+            if (step.Stop)
                 break;
-            }
-            catch (BitrixException exception) when (IsPermanent(exception))
-            {
-                var hint = exception.IsAccessDenied
-                    ? "нет права pull"
-                    : exception.Message;
-                if (await GiveUpAsync(hint, cancellationToken))
-                    break;
-                continue;
-            }
-            catch (Exception exception) when (exception is not OperationCanceledException)
-            {
-                FileLog.Write("Push&Pull: не удалось получить конфигурацию (" + exception.GetType().Name + ").");
-                if (await GiveUpAsync("конфигурация не получена", cancellationToken))
-                    break;
-                continue;
-            }
+        }
+    }
 
-            if (session is null)
-            {
-                FileLog.Write("На портале не настроен Push&Pull. Новые сообщения приходят опросом.");
-                if (await GiveUpAsync("на портале нет Push&Pull", cancellationToken))
-                    break;
-                continue;
-            }
+    private async Task<ConfigLoad> LoadConfigAsync(CancellationToken cancellationToken)
+    {
+        PullSession? session;
+        try
+        {
+            session = await _api.GetPullSessionAsync(cancellationToken);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            return new ConfigLoad(true, null);
+        }
+        catch (BitrixException exception) when (exception.IsAuthFailure)
+        {
+            FileLog.Write(exception.Message);
+            AuthenticationLost?.Invoke(this, EventArgs.Empty);
+            return new ConfigLoad(true, null);
+        }
+        catch (BitrixException exception) when (IsPermanent(exception))
+        {
+            var hint = exception.IsAccessDenied
+                ? "нет права pull"
+                : exception.Message;
+            FileLog.Write("Push&Pull: " + hint + ". Канал не поднимается.");
+            SignalUnavailable("Мгновенные сообщения недоступны.");
+            return new ConfigLoad(true, null);
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            FileLog.Write("Push&Pull: не удалось получить конфигурацию (" + exception.GetType().Name + ").");
+            return new ConfigLoad(await RetryLaterAsync("конфигурация не получена", cancellationToken), null);
+        }
 
-            var longPoll = session.HasLongPoll && (!session.WebSocketEnabled || DateTimeOffset.UtcNow < longPollUntil);
-            try
-            {
-                var outcome = longPoll
-                    ? await ReadLongPollAsync(http, session, mid, cancellationToken)
-                    : await ReadSocketAsync(session, mid, cancellationToken);
-                mid = outcome.Mid ?? mid;
-                if (outcome.Kind is PullStop.ConfigExpired or PullStop.Reconnect)
-                {
-                    if (_held)
-                    {
-                        _restores = 0;
-                        _held = false;
-                    }
-                }
-                else if (outcome.Kind == PullStop.Dropped
-                    || (outcome.Kind == PullStop.SocketBlocked && !session.HasLongPoll))
-                {
-                    if (await GiveUpAsync("соединение прервано", cancellationToken))
-                        break;
-                }
+        if (session is not null)
+            return new ConfigLoad(false, session);
 
-                if (outcome.Kind == PullStop.SocketBlocked)
-                {
-                    blocked++;
-                    if (blocked >= 3 && session.HasLongPoll)
-                    {
-                        longPollUntil = DateTimeOffset.UtcNow.AddMinutes(30);
-                        blocked = 0;
-                        FileLog.Write("Push&Pull: WebSocket недоступен, перехожу на длинный опрос.");
-                    }
-                }
-                else if (outcome.Kind != PullStop.ConfigExpired)
-                {
-                    blocked = 0;
-                }
+        if (!_down)
+            FileLog.Write("На портале не настроен Push&Pull. Новые сообщения приходят опросом.");
+        return new ConfigLoad(await RetryLaterAsync("на портале нет Push&Pull", cancellationToken), null);
+    }
 
-                var pause = outcome.Kind switch
-                {
-                    PullStop.ConfigExpired => TimeSpan.FromSeconds(3),
-                    PullStop.Dropped or PullStop.SocketBlocked => TimeSpan.FromMilliseconds(500),
-                    _ => TimeSpan.Zero
-                };
-                if (pause > TimeSpan.Zero && !await PauseAsync(pause, cancellationToken))
-                    break;
-            }
-            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+    private async Task<ChannelStep> FollowAsync(
+        HttpClient http,
+        PullSession session,
+        string? mid,
+        ChannelRoute route,
+        CancellationToken cancellationToken)
+    {
+        var longPoll = session.HasLongPoll && (!session.WebSocketEnabled || DateTimeOffset.UtcNow < route.LongPollUntil);
+        try
+        {
+            var outcome = longPoll
+                ? await ReadLongPollAsync(http, session, mid, cancellationToken)
+                : await ReadSocketAsync(session, mid, cancellationToken);
+            mid = outcome.Mid ?? mid;
+            if (await SettleAsync(session, outcome, route, cancellationToken))
+                return new ChannelStep(true, mid);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            return new ChannelStep(true, mid);
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            FileLog.Write("Push&Pull: соединение прервано (" + exception.GetType().Name + ").");
+            if (await RetryLaterAsync("соединение прервано", cancellationToken))
+                return new ChannelStep(true, mid);
+        }
+
+        return new ChannelStep(false, mid);
+    }
+
+    private async Task<bool> SettleAsync(
+        PullSession session,
+        PullOutcome outcome,
+        ChannelRoute route,
+        CancellationToken cancellationToken)
+    {
+        if (outcome.Kind is PullStop.ConfigExpired or PullStop.Reconnect)
+        {
+            if (_held)
             {
-                break;
-            }
-            catch (Exception exception) when (exception is not OperationCanceledException)
-            {
-                FileLog.Write("Push&Pull: соединение прервано (" + exception.GetType().Name + ").");
-                if (await GiveUpAsync("соединение прервано", cancellationToken))
-                    break;
+                _restores = 0;
+                _held = false;
             }
         }
+        else if (outcome.Kind == PullStop.Dropped
+            || (outcome.Kind == PullStop.SocketBlocked && !session.HasLongPoll))
+        {
+            if (await RetryLaterAsync("соединение прервано", cancellationToken))
+                return true;
+        }
+
+        if (outcome.Kind == PullStop.SocketBlocked)
+        {
+            route.Blocked++;
+            if (route.Blocked >= 3 && session.HasLongPoll)
+            {
+                route.LongPollUntil = DateTimeOffset.UtcNow.AddMinutes(30);
+                route.Blocked = 0;
+                FileLog.Write("Push&Pull: WebSocket недоступен, перехожу на длинный опрос.");
+            }
+        }
+        else if (outcome.Kind != PullStop.ConfigExpired)
+        {
+            route.Blocked = 0;
+        }
+
+        var pause = outcome.Kind switch
+        {
+            PullStop.ConfigExpired => TimeSpan.FromSeconds(3),
+            PullStop.Dropped or PullStop.SocketBlocked => TimeSpan.FromMilliseconds(500),
+            _ => TimeSpan.Zero
+        };
+        return pause > TimeSpan.Zero && !await PauseAsync(pause, cancellationToken);
     }
 
     private async Task<PullOutcome> ReadSocketAsync(PullSession session, string? mid, CancellationToken cancellationToken)
@@ -162,9 +192,7 @@ public sealed class PullListener
                 return new PullOutcome(PullStop.Dropped, mid);
             }
 
-            _held = true;
-            if (Interlocked.Exchange(ref _loggedConnect, 1) == 0)
-                FileLog.Write("Push&Pull: WebSocket подключён.");
+            MarkHeld("Push&Pull: WebSocket подключён.", traffic: true);
 
             var outcome = await ReceiveSocketAsync(socket, session, mid, cancellationToken);
             mid = outcome.Mid ?? mid;
@@ -197,35 +225,11 @@ public sealed class PullListener
         while (!cancellationToken.IsCancellationRequested && socket.State == WebSocketState.Open)
         {
             body.SetLength(0);
-            WebSocketReceiveResult result;
-            while (true)
-            {
-                using var silence = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-                silence.CancelAfter(Silence);
-                try
-                {
-                    result = await socket.ReceiveAsync(buffer, silence.Token);
-                }
-                catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
-                {
-                    return new PullOutcome(PullStop.Dropped, mid);
-                }
-                catch (WebSocketException exception) when (!cancellationToken.IsCancellationRequested)
-                {
-                    var blocked = Blocked(socket) || exception.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely;
-                    return new PullOutcome(blocked ? PullStop.SocketBlocked : PullStop.Dropped, mid);
-                }
+            var frame = await ReadFrameAsync(socket, buffer, body, mid, cancellationToken);
+            if (frame.Outcome is PullOutcome stopped)
+                return stopped;
 
-                if (result.MessageType == WebSocketMessageType.Close)
-                    return new PullOutcome(Blocked(socket) ? PullStop.SocketBlocked : PullStop.Dropped, mid);
-
-                body.Write(buffer, 0, result.Count);
-                if (result.EndOfMessage)
-                    break;
-                if (body.Length > 1_000_000)
-                    return new PullOutcome(PullStop.Dropped, mid);
-            }
-
+            var result = frame.Result;
             var text = result.MessageType == WebSocketMessageType.Binary
                 ? PullFrame.ToJson(body.GetBuffer().AsSpan(0, (int)body.Length))
                 : System.Text.Encoding.UTF8.GetString(body.GetBuffer(), 0, (int)body.Length);
@@ -238,15 +242,53 @@ public sealed class PullListener
         return new PullOutcome(PullStop.Dropped, mid);
     }
 
+    private async Task<SocketFrame> ReadFrameAsync(
+        ClientWebSocket socket,
+        byte[] buffer,
+        MemoryStream body,
+        string? mid,
+        CancellationToken cancellationToken)
+    {
+        while (true)
+        {
+            using var silence = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            silence.CancelAfter(Silence);
+            WebSocketReceiveResult result;
+            try
+            {
+                result = await socket.ReceiveAsync(buffer, silence.Token);
+            }
+            catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+            {
+                return SocketFrame.Stop(new PullOutcome(PullStop.Dropped, mid));
+            }
+            catch (WebSocketException exception) when (!cancellationToken.IsCancellationRequested)
+            {
+                var blocked = Blocked(socket) || exception.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely;
+                return SocketFrame.Stop(Closed(blocked, mid));
+            }
+
+            if (result.MessageType == WebSocketMessageType.Close)
+                return SocketFrame.Stop(Closed(Blocked(socket), mid));
+
+            body.Write(buffer, 0, result.Count);
+            if (result.EndOfMessage)
+                return SocketFrame.Message(result);
+            if (body.Length > 1_000_000)
+                return SocketFrame.Stop(new PullOutcome(PullStop.Dropped, mid));
+        }
+    }
+
+    private static PullOutcome Closed(bool blocked, string? mid) =>
+        new(blocked ? PullStop.SocketBlocked : PullStop.Dropped, mid);
+
     private async Task<PullOutcome> ReadLongPollAsync(
         HttpClient http,
         PullSession session,
         string? mid,
         CancellationToken cancellationToken)
     {
-        _held = true;
-        if (Interlocked.Exchange(ref _loggedConnect, 1) == 0)
-            FileLog.Write("Push&Pull: длинный опрос.");
+        MarkHeld("Push&Pull: длинный опрос.", traffic: false);
 
         while (!cancellationToken.IsCancellationRequested)
         {
@@ -270,7 +312,10 @@ public sealed class PullListener
             using (response)
             {
                 if (response.StatusCode == HttpStatusCode.NotModified)
+                {
+                    NoticeTraffic();
                     continue;
+                }
                 if (!response.IsSuccessStatusCode)
                     return new PullOutcome(PullStop.Dropped, mid);
 
@@ -296,6 +341,7 @@ public sealed class PullListener
 
     private PullOutcome Apply(PullSession session, string text, string? mid)
     {
+        NoticeTraffic();
         var reload = false;
         var replaced = false;
         foreach (var notice in PullSession.ReadNotices(text))
@@ -361,8 +407,38 @@ public sealed class PullListener
         }
     }
 
-    private async Task<bool> GiveUpAsync(string why, CancellationToken cancellationToken)
+    private void MarkHeld(string connected, bool traffic)
     {
+        _held = true;
+        if (Interlocked.Exchange(ref _loggedConnect, 1) == 0)
+            FileLog.Write(connected);
+        if (traffic)
+            NoticeTraffic();
+    }
+
+    private void NoticeTraffic()
+    {
+        if (!_down)
+            return;
+
+        _down = false;
+        _restores = 0;
+        FileLog.Write("Push&Pull: соединение восстановлено.");
+        Restored?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void SignalUnavailable(string message)
+    {
+        if (_down)
+            return;
+
+        _down = true;
+        Unavailable?.Invoke(this, message);
+    }
+
+    private async Task<bool> RetryLaterAsync(string why, CancellationToken cancellationToken)
+    {
+        SignalUnavailable("Мгновенные сообщения переподключаются.");
         if (_held)
         {
             _restores = 0;
@@ -371,14 +447,7 @@ public sealed class PullListener
         }
 
         _restores++;
-        if (_restores >= RestoreLimit)
-        {
-            FileLog.Write("Push&Pull: " + why + ". Три попытки не удались, право pull снято до следующего открытия.");
-            Unavailable?.Invoke(this, "Мгновенные сообщения недоступны.");
-            return true;
-        }
-
-        FileLog.Write("Push&Pull: " + why + ". Попытка " + _restores.ToString(System.Globalization.CultureInfo.InvariantCulture) + " из 3.");
+        FileLog.Write("Push&Pull: " + why + ". Попытка " + _restores.ToString(System.Globalization.CultureInfo.InvariantCulture) + ".");
         return !await PauseAsync(PullReconnect.Delay(_restores), cancellationToken);
     }
 
@@ -403,6 +472,36 @@ public sealed class PullListener
         {
             return false;
         }
+    }
+
+    private readonly record struct ConfigLoad(bool Stop, PullSession? Session);
+
+    private readonly record struct ChannelStep(bool Stop, string? Mid);
+
+    private sealed class ChannelRoute
+    {
+        public int Blocked;
+        public DateTimeOffset LongPollUntil = DateTimeOffset.MinValue;
+    }
+
+    private readonly struct SocketFrame
+    {
+        private SocketFrame(WebSocketReceiveResult result, PullOutcome stop, bool stopped)
+        {
+            Result = result;
+            _stop = stop;
+            _stopped = stopped;
+        }
+
+        public WebSocketReceiveResult Result { get; }
+        public PullOutcome? Outcome => _stopped ? _stop : null;
+
+        public static SocketFrame Message(WebSocketReceiveResult result) => new(result, default, false);
+        public static SocketFrame Stop(PullOutcome outcome) =>
+            new(new WebSocketReceiveResult(0, WebSocketMessageType.Text, true), outcome, true);
+
+        private readonly PullOutcome _stop;
+        private readonly bool _stopped;
     }
 
     private readonly record struct PullOutcome(PullStop Kind, string? Mid);
